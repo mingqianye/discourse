@@ -27,6 +27,7 @@ function loadDraft(store, opts) {
       action: draft.action,
       title: draft.title,
       categoryId: draft.categoryId || opts.categoryId,
+      tags: draft.tags,
       postId: draft.postId,
       archetypeId: draft.archetypeId,
       reply: draft.reply,
@@ -509,6 +510,10 @@ export default Ember.Controller.extend({
 
     if (opts.topicTitle && opts.topicTitle.length <= this.siteSettings.max_topic_title_length) {
       this.set('model.title', opts.topicTitle);
+    }
+
+    if (opts.topicTags) {
+      this.set('model.tags', opts.topicTags);
     }
 
     if (opts.topicCategoryId) {
